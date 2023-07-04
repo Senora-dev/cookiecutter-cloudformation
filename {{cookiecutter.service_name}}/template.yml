@@ -1,0 +1,26 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: {{cookiecutter.service_name}} VPC function.
+Resources:
+  Function:
+    Type: AWS::Lambda::Function
+    Properties:
+      Handler: index.handler
+      Role: arn:aws:iam::123456789012:role/{{cookiecutter.function_name}}-lambda-role
+      Code:
+        S3Bucket: {{cookiecutter.function_name}}-bucket
+        S3Key: function.zip
+      Runtime: {{cookiecutter.runtime}}
+      Timeout: 5
+      TracingConfig:
+        Mode: Active
+      VpcConfig:
+        SecurityGroupIds:
+          - sg-085912345678492fb
+        SubnetIds:
+          - subnet-071f712345678e7c8
+          - subnet-07fd123456788a036
+      Tags: 
+        - Key: "keyname1"
+          Value: "value1"
+        - Key: "keyname2"
+          Value: "value2"

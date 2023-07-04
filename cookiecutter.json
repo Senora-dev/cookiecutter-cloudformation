@@ -1,0 +1,6 @@
+{
+"service_name": "auth_service",
+"description": "Verifying identities for secure access.",
+"function_name": "auth_main_func",
+"runtime": "nodejs18.x"
+}
